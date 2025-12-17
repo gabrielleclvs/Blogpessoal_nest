@@ -1,10 +1,13 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { Tema } from "../entities/tema.entity";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { TemaService } from "../service/tema.service";
 
 @UseGuards(JwtAuthGuard)    // Colocando essa Anotação aqui, indica que todos os endpoints são protegidos
+@ApiTags('Tema')
 @Controller("/temas")
+@ApiBearerAuth()
 export class TemaController {
     constructor(private readonly temaService: TemaService) { }
 
