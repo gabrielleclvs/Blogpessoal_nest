@@ -10,12 +10,13 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { ProdService } from './data/services/prod.service';
 import { PostagemModule } from './postagem/postagem.module';
+import { DevService } from './data/services/dev.service';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
-      useClass: ProdService,
+      useClass: DevService,
       imports: [ConfigModule],
     }),
     PostagemModule,
